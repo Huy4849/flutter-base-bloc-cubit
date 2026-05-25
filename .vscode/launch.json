@@ -1,0 +1,26 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Run Develop",
+      "request": "launch",
+      "type": "dart",
+      "program": "lib/main_develop.dart",
+      "args": ["--flavor", "develop"]
+    },
+    {
+      "name": "Run Staging",
+      "request": "launch",
+      "type": "dart",
+      "program": "lib/main_staging.dart",
+      "args": ["--flavor", "staging"]
+    },
+    {
+      "name": "Run Product",
+      "request": "launch",
+      "type": "dart",
+      "program": "lib/main_product.dart",
+      "args": ["--flavor", "product"]
+    }
+  ]
+}

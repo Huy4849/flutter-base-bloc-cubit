@@ -1,0 +1,1 @@
+enum XelaAccordionIconPosition { LEFT, RIGHT }
