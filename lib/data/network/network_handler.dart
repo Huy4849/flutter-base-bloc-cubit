@@ -27,16 +27,10 @@ class NetworkHandler {
     switch (errorType) {
       case DioErrorType.cancel:
         return true;
-      case DioErrorType.connectTimeout:
-        return true;
       case DioErrorType.receiveTimeout:
         return true;
       case DioErrorType.sendTimeout:
         return true;
-      case DioErrorType.other:
-        return true;
-      case DioErrorType.response:
-        return false;
       default:
         return true;
     }

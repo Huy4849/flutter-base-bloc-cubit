@@ -32,16 +32,6 @@ class _DashPainter extends CustomPainter {
       ..style = PaintingStyle.stroke;
 
     Path _path;
-    if (customPath != null) {
-      _path = dashPath(
-        customPath!(size),
-        dashArray: CircularIntervalList(dashPattern),
-      );
-    } else {
-      _path = _getPath(size);
-    }
-
-    canvas.drawPath(_path, paint);
   }
 
   /// Returns a [Path] based on the the [borderType] parameter
@@ -62,7 +52,7 @@ class _DashPainter extends CustomPainter {
         break;
     }
 
-    return dashPath(path, dashArray: CircularIntervalList(dashPattern));
+    return path;
   }
 
   /// Returns a circular path of [size]

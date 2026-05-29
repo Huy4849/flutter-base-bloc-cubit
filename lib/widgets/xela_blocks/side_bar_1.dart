@@ -115,7 +115,6 @@ class _Sidebar1State extends State<SideBar1>
                         padding: const EdgeInsets.only(
                             top: 24, left: 16, right: 16, bottom: 16),
                         height: double.infinity,
-                        width: sizeAnimation.value,
                         decoration: BoxDecoration(
                           color: _isDark ? XelaColor.Gray2 : Colors.white,
                           borderRadius: BorderRadius.circular(24),
@@ -127,19 +126,7 @@ class _Sidebar1State extends State<SideBar1>
                                 children: [
                                   isOpen
                                       ? Expanded(
-                                          child: Opacity(
-                                              opacity: fadeAnimation.value,
-                                              child: Container(
-                                                  alignment:
-                                                      Alignment.centerLeft,
-                                                  height: 16,
-                                                  child: Image.asset(
-                                                      "assets/images/logo.png",
-                                                      height: 16,
-                                                      color: _isDark
-                                                          ? XelaColor.Gray11
-                                                          : XelaColor.Gray2,
-                                                      fit: BoxFit.fitHeight))))
+                                          child: SizedBox())
                                       : const SizedBox.shrink(),
                                   InkWell(
                                     onTap: () {

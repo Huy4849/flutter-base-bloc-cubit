@@ -18,24 +18,14 @@ class AppBarNormal extends AppBar {
           // leadingWidth: 82,
           elevation: 0.0,
           backgroundColor: backgroundColor ?? Colors.white,
-          title: title is String
-              ? buildTitle(
-                  context,
-                  title,
-                  action,
-                )
-              : title,
+          title: SizedBox(),
           leading: _buildLeading(leading, context),
           centerTitle: true,
           actions: action is List<Widget>
               ? action
               : [
                   if (action != null)
-                    Center(
-                      child: buildAppBarButton(action,
-                          onPressed: onRightTap,
-                          margin: const EdgeInsets.only(right: 20)),
-                    )
+                    const SizedBox.shrink()
                   else
                     const SizedBox.shrink()
                 ].toList(),
