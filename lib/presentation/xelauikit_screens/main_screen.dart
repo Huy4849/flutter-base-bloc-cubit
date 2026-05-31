@@ -1,7 +1,7 @@
 import 'package:bnv_opendata/presentation/xelauikit_screens/about_screen.dart';
 import 'package:bnv_opendata/presentation/xelauikit_screens/blocks_screen.dart';
 import 'package:bnv_opendata/presentation/xelauikit_screens/components_screen.dart';
-import 'package:bnv_opendata/presentation/xelauikit_screens/home_screen.dart';
+import 'package:bnv_opendata/presentation/xelauikit_screens/home/home_screen.dart';
 import 'package:bnv_opendata/presentation/xelauikit_screens/templates_screen.dart';
 import 'package:bnv_opendata/widgets/xela_widgets/xela_color.dart';
 import 'package:flutter/material.dart';
