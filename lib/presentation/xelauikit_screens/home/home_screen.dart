@@ -65,6 +65,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           borderRadius: BorderRadius.circular(16.0),
                           child: Image.asset('assets/images/icon-1.png', width: 24, height: 24, fit: BoxFit.cover),
                         ),
+                        isCard: true,
                       ),
                       const SizedBox(width: 12),
                       WalletCard(
@@ -76,6 +77,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           decoration: const BoxDecoration(color: Color(0xFF12D14C), shape: BoxShape.circle),
                           child: Image.asset('assets/images/icon-2.png'),
                         ),
+                        isCard: false,
                       ),
                     ],
                   ),

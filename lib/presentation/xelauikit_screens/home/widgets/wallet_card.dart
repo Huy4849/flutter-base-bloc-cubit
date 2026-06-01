@@ -5,6 +5,7 @@ class WalletCard extends StatelessWidget {
   final String balance;
   final String trailingText;
   final Widget trailingIcon;
+  final bool isCard;
 
   const WalletCard({
     super.key,
@@ -12,6 +13,7 @@ class WalletCard extends StatelessWidget {
     required this.balance,
     required this.trailingText,
     required this.trailingIcon,
+    required this.isCard
   });
 
   @override
@@ -62,7 +64,7 @@ class WalletCard extends StatelessWidget {
               ],
             ),
             const SizedBox(height: 14),
-            trailingText.length == 4
+            isCard
                 ? Row(
               children: [
                 const Text('. . . .', style: TextStyle(fontWeight: FontWeight.w800, fontSize: 10, color: Color(0xFF242424))),
