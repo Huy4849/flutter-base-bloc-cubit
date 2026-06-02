@@ -1,7 +1,24 @@
 import 'package:flutter/material.dart';
 
 class BudgetCard extends StatelessWidget {
-  const BudgetCard({super.key});
+  final String budgetTitle;
+  final String budgetSpent;
+  final String budgetTotal;
+  final double budgetProgress;
+  final String budgetPercent;
+  final String budgetDaily;
+  final String budgetDaysLeft;
+
+  const BudgetCard({
+    super.key,
+    required this.budgetTitle,
+    required this.budgetSpent,
+    required this.budgetTotal,
+    required this.budgetProgress,
+    required this.budgetPercent,
+    required this.budgetDaily,
+    required this.budgetDaysLeft,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -17,9 +34,12 @@ class BudgetCard extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Text(
-              'January budget',
-              style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600, color: Color(0xFF242424)),
+            Text(
+              budgetTitle,
+              style: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.w600,
+                  color: Color(0xFF242424)),
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -27,25 +47,34 @@ class BudgetCard extends StatelessWidget {
                 RichText(
                   text: TextSpan(
                     children: [
-                      const TextSpan(
-                        text: '\$ 480',
-                        style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700, color: Color(0xFF2836B5)),
+                      TextSpan(
+                        text: '\$ $budgetSpent',
+                        style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w700,
+                            color: Color(0xFF2836B5)),
                       ),
                       WidgetSpan(
                         child: Transform.translate(
                           offset: const Offset(0, 2),
-                          child: const Text(
-                            '/ \$820',
-                            style: TextStyle(fontSize: 11, fontWeight: FontWeight.w400, color: Color(0xFF838486)),
+                          child: Text(
+                            '/ \$ $budgetTotal',
+                            style: TextStyle(
+                                fontSize: 11,
+                                fontWeight: FontWeight.w400,
+                                color: Color(0xFF838486)),
                           ),
                         ),
                       )
                     ],
                   ),
                 ),
-                const Text(
-                  '64%',
-                  style: TextStyle(fontWeight: FontWeight.w400, fontSize: 11, color: Color(0xFF707070)),
+                Text(
+                  budgetPercent,
+                  style: TextStyle(
+                      fontWeight: FontWeight.w400,
+                      fontSize: 11,
+                      color: Color(0xFF707070)),
                 )
               ],
             ),
@@ -56,23 +85,30 @@ class BudgetCard extends StatelessWidget {
                 height: 4,
                 child: LinearProgressIndicator(
                   borderRadius: BorderRadius.circular(2),
-                  value: 0.64,
+                  value: budgetProgress,
                   backgroundColor: const Color(0xFFF3F3F3),
-                  valueColor: const AlwaysStoppedAnimation<Color>(Color(0xFF8557A0)),
+                  valueColor:
+                      const AlwaysStoppedAnimation<Color>(Color(0xFF8557A0)),
                 ),
               ),
             ),
             const SizedBox(height: 4),
-            const Row(
+            Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  'Daily budget - (\$26.45 - 45.33)',
-                  style: TextStyle(fontSize: 11, fontWeight: FontWeight.w400, color: Color(0xFF707070)),
+                  budgetDaily,
+                  style: TextStyle(
+                      fontSize: 11,
+                      fontWeight: FontWeight.w400,
+                      color: Color(0xFF707070)),
                 ),
                 Text(
-                  '19 days left',
-                  style: TextStyle(fontWeight: FontWeight.w400, fontSize: 11, color: Color(0xFF707070)),
+                  budgetDaysLeft,
+                  style: TextStyle(
+                      fontWeight: FontWeight.w400,
+                      fontSize: 11,
+                      color: Color(0xFF707070)),
                 )
               ],
             )

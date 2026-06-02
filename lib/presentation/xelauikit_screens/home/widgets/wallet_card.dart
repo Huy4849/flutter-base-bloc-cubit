@@ -4,16 +4,16 @@ class WalletCard extends StatelessWidget {
   final List<Color> gradientColors;
   final String balance;
   final String trailingText;
-  final Widget trailingIcon;
-  final bool isCard;
+  final String iconPath;
+  final bool isCheck;
 
   const WalletCard({
     super.key,
     required this.gradientColors,
     required this.balance,
     required this.trailingText,
-    required this.trailingIcon,
-    required this.isCard
+    required this.iconPath,
+    required this.isCheck
   });
 
   @override
@@ -60,11 +60,18 @@ class WalletCard extends StatelessWidget {
                     )
                   ],
                 ),
-                trailingIcon,
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(16.0),
+                  child: isCheck ? Image.asset(iconPath, width: 24, height: 24, fit: BoxFit.cover) : Container(
+                    width: 24, height: 24,
+                    decoration: const BoxDecoration(color: Color(0xFF12D14C), shape: BoxShape.circle),
+                    child: Image.asset(iconPath),
+                  ),
+                ),
               ],
             ),
             const SizedBox(height: 14),
-            isCard
+            isCheck
                 ? Row(
               children: [
                 const Text('. . . .', style: TextStyle(fontWeight: FontWeight.w800, fontSize: 10, color: Color(0xFF242424))),
