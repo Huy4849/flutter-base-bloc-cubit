@@ -3,6 +3,7 @@ import 'package:bnv_opendata/presentation/xelauikit_screens/blocks_screen.dart';
 import 'package:bnv_opendata/presentation/xelauikit_screens/components_screen.dart';
 import 'package:bnv_opendata/presentation/xelauikit_screens/home/home_screen.dart';
 import 'package:bnv_opendata/presentation/xelauikit_screens/templates_screen.dart';
+import 'package:bnv_opendata/presentation/xelauikit_screens/static/static_screen.dart';
 import 'package:bnv_opendata/widgets/xela_widgets/xela_color.dart';
 import 'package:flutter/material.dart';
 
@@ -18,6 +19,7 @@ class _MainScreenState extends State<MainScreen> {
 
   static const List<Widget> _pages = <Widget>[
     HomeScreen(),
+    StaticScreen(),
     ComponentsScreen(),
     BlocksScreen(),
     TemplatesScreen(),
@@ -56,9 +58,18 @@ class _MainScreenState extends State<MainScreen> {
           BottomNavigationBarItem(
             backgroundColor: XelaColor.Gray12,
             icon: Icon(
-              Icons.toggle_off,
+              Icons.insert_chart_outlined,
               size: 20,
               color: _selectedIndex == 1 ? XelaColor.Blue3 : XelaColor.Gray7,
+            ),
+            label: 'Static',
+          ),
+          BottomNavigationBarItem(
+            backgroundColor: XelaColor.Gray12,
+            icon: Icon(
+              Icons.toggle_off,
+              size: 20,
+              color: _selectedIndex == 2 ? XelaColor.Blue3 : XelaColor.Gray7,
             ),
             label: 'Components',
           ),
@@ -67,7 +78,7 @@ class _MainScreenState extends State<MainScreen> {
             icon: Icon(
               Icons.widgets,
               size: 20,
-              color: _selectedIndex == 2 ? XelaColor.Blue3 : XelaColor.Gray7,
+              color: _selectedIndex == 3 ? XelaColor.Blue3 : XelaColor.Gray7,
             ),
             label: 'Blocks',
           ),
@@ -76,7 +87,7 @@ class _MainScreenState extends State<MainScreen> {
             icon: Icon(
               Icons.auto_fix_high,
               size: 20,
-              color: _selectedIndex == 3 ? XelaColor.Blue3 : XelaColor.Gray7,
+              color: _selectedIndex == 4 ? XelaColor.Blue3 : XelaColor.Gray7,
             ),
             label: 'Templates',
           ),
@@ -85,7 +96,7 @@ class _MainScreenState extends State<MainScreen> {
             icon: Icon(
               Icons.info,
               size: 20,
-              color: _selectedIndex == 4 ? XelaColor.Blue3 : XelaColor.Gray7,
+              color: _selectedIndex == 5 ? XelaColor.Blue3 : XelaColor.Gray7,
             ),
             label: 'About',
           ),
