@@ -1,6 +1,9 @@
+import 'package:bnv_opendata/presentation/xelauikit_screens/static/widgets/budget_static-section.dart';
+import 'package:bnv_opendata/presentation/xelauikit_screens/static/widgets/chart_section.dart';
+import 'package:bnv_opendata/presentation/xelauikit_screens/static/widgets/header_static.dart';
+import 'package:bnv_opendata/presentation/xelauikit_screens/static/widgets/time_section.dart';
+import 'package:bnv_opendata/presentation/xelauikit_screens/static/widgets/most_spent-section.dart';
 import 'package:flutter/material.dart';
-import 'widgets/header_static.dart';
-import 'widgets/time_section.dart';
 class StaticScreen extends StatefulWidget {
   const StaticScreen({super.key});
   @override
@@ -10,9 +13,9 @@ class StaticScreen extends StatefulWidget {
 class _StaticScreenState extends State<StaticScreen> {
   @override
   Widget build(BuildContext context) {
-    double screenWidth = MediaQuery.of(context).size.width;
+    final screenWidth = MediaQuery.of(context).size.width;
     return Scaffold(
-      backgroundColor: Color(0xFFF3F3F3),
+      backgroundColor: const Color(0xFFF3F3F3),
       body: SingleChildScrollView(
         child: Column(
           children: [
@@ -20,32 +23,14 @@ class _StaticScreenState extends State<StaticScreen> {
               height: 225,
               child: Stack(children: [
                 HeaderStatic(screenWidth: screenWidth),
-                TimeSection()
+                const TimeSection()
               ]),
             ),
-            Padding(
-              padding: const EdgeInsets.fromLTRB(16, 0, 16, 0),
-              child: Container(
-                width: double.infinity,
-                height: 223,
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(9)
-                ),
-                child: Column(
-                  children: [
-                    Image.asset('assets/images/chart.png')
-
-                    Row(
-                      children: [
-
-                      ]
-                    )
-                  ],
-                ),
-              ),
-            )
-
+            ChartSection(),
+            const SizedBox(height: 16,),
+            BudgetStaticSection(),
+            const SizedBox(height: 16,),
+            MostSpentSection()
           ],
         ),
       ),

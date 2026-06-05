@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-// Sử dụng đường dẫn tương đối để đảm bảo tìm thấy đúng file trong cùng thư mục static/widgets
 import 'time_static.dart';
 
 class TimeSection extends StatelessWidget {
@@ -8,17 +7,35 @@ class TimeSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final List<Map<String, dynamic>> fakeTimedata = [
-      {'year': '2023', 'month': 'Jan'},
-      {'year': '2023', 'month': 'Feb'},
-      {'year': '2023', 'month': 'Mar'},
-      {'year': '2023', 'month': 'Apr'},
-      {'year': '2023', 'month': 'May'},
-      {'year': '2023', 'month': 'Jun'},
+      {'year': '2023', 'month': 'Jan', 'isCheck': true},
+      {'year': '2023', 'month': 'Feb', 'isCheck': false},
+      {'year': '2023', 'month': 'Mar', 'isCheck': false},
+      {'year': '2023', 'month': 'Apr', 'isCheck': false},
+      {'year': '2023', 'month': 'May', 'isCheck': false},
+      {'year': '2023', 'month': 'Jun', 'isCheck': false},
     ];
 
-    return TimeStatic(
-      timeData: fakeTimedata,
-      selectedIndex: 0,
+    return Positioned(
+      top: 118,
+      left: 16,
+      right: 16,
+      child: Container(
+        height: 76,
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(9),
+        ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: fakeTimedata.map((time) {
+            return TimeStatic(
+              yearText: time['year'] as String,
+              monthText: time['month'] as String,
+              isCheck: time['isCheck'] as bool,
+            );
+          }).toList(),
+        ),
+      ),
     );
   }
 }
