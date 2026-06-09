@@ -68,6 +68,8 @@ dependencies:
   # Library support for app
   crypto: ^3.0.7
   sqflite: ^2.3.3
+  mat_month_picker_dialog: ^1.1.3
+  fl_chart: ^1.2.0
 
 dev_dependencies:
   flutter_test:

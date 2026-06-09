@@ -13,7 +13,7 @@ class TransactionSection extends StatelessWidget {
         'date': '07-01-2023',
         'amount': '-\$32.00',
         'amountColor': const Color(0xFFE25C5C),
-        'iconIndex': 1, // Đánh số để nhận diện loại icon vẽ Stack bên dưới
+        'iconIndex': 1,
       },
       {
         'title': 'ABYAN CAPITAL',

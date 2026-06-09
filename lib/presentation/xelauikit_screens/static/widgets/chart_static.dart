@@ -19,6 +19,7 @@ class ChartStatic extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Row(
           crossAxisAlignment: CrossAxisAlignment.center,
