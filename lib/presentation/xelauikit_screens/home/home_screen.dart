@@ -1,3 +1,4 @@
+import 'package:bnv_opendata/config/routes/router.dart';
 import 'package:bnv_opendata/presentation/xelauikit_screens/home/widgets/wallets_section.dart';
 import 'package:flutter/material.dart';
 // Import các widget con bằng đường dẫn tương đối từ folder widgets vừa tạo
@@ -46,7 +47,19 @@ class _HomeScreenState extends State<HomeScreen> {
                   const SizedBox(height: 16),
 
                   // Transactions
-                  TransactionSection()
+                  TransactionSection(),
+
+                  const SizedBox(height: 16),
+
+                  // Demo gọi API + Cubit (mẫu chuẩn cho feature mới)
+                  Center(
+                    child: TextButton.icon(
+                      onPressed: () =>
+                          Navigator.pushNamed(context, AppRouter.posts),
+                      icon: const Icon(Icons.cloud_download),
+                      label: const Text('API Demo (Posts)'),
+                    ),
+                  ),
                 ],
               ),
             ),

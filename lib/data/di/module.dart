@@ -1,4 +1,6 @@
 import 'package:bnv_opendata/data/di/flutter_transformer.dart';
+import 'package:bnv_opendata/data/repository/post_repository.dart';
+import 'package:bnv_opendata/data/services/post_service.dart';
 import 'package:bnv_opendata/domain/env/model/app_constants.dart';
 import 'package:bnv_opendata/domain/locals/prefs_service.dart';
 import 'package:dio/dio.dart';
@@ -6,7 +8,11 @@ import 'package:flutter/foundation.dart' as Foundation;
 import 'package:get/get.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 
-void configureDependencies() {}
+void configureDependencies() {
+  final dio = provideDio();
+  Get.put(PostService(dio));
+  Get.put(PostRepository(Get.find()));
+}
 
 int _connectTimeOut = 60000;
 

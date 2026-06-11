@@ -1,3 +1,4 @@
+import 'package:bnv_opendata/presentation/posts/post_list_screen.dart';
 import 'package:bnv_opendata/presentation/xelauikit_screens/main_screen.dart';
 import 'package:bnv_opendata/utils/constants/app_constants.dart';
 import 'package:bnv_opendata/widgets/xela_components/accordion_component.dart';
@@ -35,6 +36,7 @@ class AppRouter {
   ///Main App
   static const splash = '/splash';
   static const main = '/main';
+  static const posts = '/posts';
 
   //Xela UI Screen
   static const typography = '/typography';
@@ -69,6 +71,8 @@ class AppRouter {
     switch (settings.name) {
       case main:
         return MaterialPageRoute(builder: (ctx) => const MainScreen());
+      case posts:
+        return MaterialPageRoute(builder: (ctx) => const PostListScreen());
       //Router screen ui xela kit
       case typography:
         return MaterialPageRoute(builder: (ctx) => const TypographyComponent());
