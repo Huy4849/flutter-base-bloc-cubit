@@ -1,12 +1,19 @@
 import 'package:bnv_opendata/data/di/flutter_transformer.dart';
+import 'package:bnv_opendata/data/repositories/budget_repository.dart';
+import 'package:bnv_opendata/data/services/budget_service.dart';
 import 'package:bnv_opendata/domain/env/model/app_constants.dart';
 import 'package:bnv_opendata/domain/locals/prefs_service.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart' as Foundation;
 import 'package:get/get.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
+import '';
 
-void configureDependencies() {}
+void configureDependencies() {
+  final dio = provideDio();
+  Get.put(BudgetService(dio));
+  Get.put(BudgetRepository(Get.find()));
+}
 
 int _connectTimeOut = 60000;
 
@@ -35,10 +42,10 @@ Dio provideDio() {
         return handler.next(options);
       },
       onResponse: (response, handler) {
-        return handler.next(response); // continue
+        return handler.next(response);
       },
       onError: (DioException e, handler) {
-        return handler.next(e); //continue
+        return handler.next(e);
       },
     ),
   );

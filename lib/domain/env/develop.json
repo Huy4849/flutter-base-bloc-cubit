@@ -1,5 +1,5 @@
 {
   "type": "develop",
-  "base_url": "https://www.google.com/",
-  "base_image_url": "https://www.google.com/"
+  "base_url": "https://money-manager-be-wine.vercel.app",
+  "base_image_url": "https://money-manager-be-wine.vercel.app"
 }
