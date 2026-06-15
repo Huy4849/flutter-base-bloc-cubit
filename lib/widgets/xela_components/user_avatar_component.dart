@@ -29,7 +29,7 @@ class _UserAvatarComponentState extends State<UserAvatarComponent> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Padding(
-                  padding: EdgeInsets.only(top: 8),
+                  padding: const EdgeInsets.only(top: 8),
                   child: Row(
                     children: [
                       RawMaterialButton(
@@ -67,9 +67,9 @@ class _UserAvatarComponentState extends State<UserAvatarComponent> {
                           },
                           status: _isDark,
                           size: XelaToggleSize.MEDIUM,
-                          iconOn: Icon(Icons.nightlight_round,
+                          iconOn: const Icon(Icons.nightlight_round,
                               size: 20, color: XelaColor.Gray3),
-                          iconOff: Icon(Icons.nightlight_round,
+                          iconOff: const Icon(Icons.nightlight_round,
                               size: 20, color: XelaColor.Gray7),
                           onBackground: XelaColor.Gray3,
                         ),
@@ -124,7 +124,7 @@ class _UserAvatarComponentState extends State<UserAvatarComponent> {
                           size: XelaUserAvatarSize.LARGE,
                           style: XelaUserAvatarStyle.RECTANGLE,
                           decoration: XelaUserAvatarDecoration.PLUS,
-                          plusIcon: Icon(
+                          plusIcon: const Icon(
                             Icons.add,
                             color: Colors.white,
                           ),
@@ -140,7 +140,7 @@ class _UserAvatarComponentState extends State<UserAvatarComponent> {
                           size: XelaUserAvatarSize.LARGE,
                           style: XelaUserAvatarStyle.CIRCLE,
                           decoration: XelaUserAvatarDecoration.PLUS,
-                          plusIcon: Icon(
+                          plusIcon: const Icon(
                             Icons.add,
                             color: Colors.white,
                           ),
@@ -179,7 +179,7 @@ class _UserAvatarComponentState extends State<UserAvatarComponent> {
                           size: XelaUserAvatarSize.MEDIUM,
                           style: XelaUserAvatarStyle.RECTANGLE,
                           decoration: XelaUserAvatarDecoration.PLUS,
-                          plusIcon: Icon(
+                          plusIcon: const Icon(
                             Icons.add,
                             color: Colors.white,
                           ),
@@ -195,7 +195,7 @@ class _UserAvatarComponentState extends State<UserAvatarComponent> {
                           size: XelaUserAvatarSize.MEDIUM,
                           style: XelaUserAvatarStyle.CIRCLE,
                           decoration: XelaUserAvatarDecoration.PLUS,
-                          plusIcon: Icon(
+                          plusIcon: const Icon(
                             Icons.add,
                             color: Colors.white,
                           ),
@@ -234,7 +234,7 @@ class _UserAvatarComponentState extends State<UserAvatarComponent> {
                           size: XelaUserAvatarSize.SMALL,
                           style: XelaUserAvatarStyle.RECTANGLE,
                           decoration: XelaUserAvatarDecoration.PLUS,
-                          plusIcon: Icon(
+                          plusIcon: const Icon(
                             Icons.add,
                             color: Colors.white,
                           ),
@@ -250,7 +250,7 @@ class _UserAvatarComponentState extends State<UserAvatarComponent> {
                           size: XelaUserAvatarSize.SMALL,
                           style: XelaUserAvatarStyle.CIRCLE,
                           decoration: XelaUserAvatarDecoration.PLUS,
-                          plusIcon: Icon(
+                          plusIcon: const Icon(
                             Icons.add,
                             color: Colors.white,
                           ),
@@ -656,14 +656,14 @@ class _UserAvatarComponentState extends State<UserAvatarComponent> {
                     child: Row(
                       children: [
                         XelaUserAvatar(
-                          icon: Icon(
+                          icon: const Icon(
                             Icons.account_circle,
                             color: Colors.white,
                           ),
                           size: XelaUserAvatarSize.LARGE,
                         ),
                         XelaUserAvatar(
-                          icon: Icon(
+                          icon: const Icon(
                             Icons.account_circle,
                             color: Colors.white,
                           ),
@@ -671,14 +671,14 @@ class _UserAvatarComponentState extends State<UserAvatarComponent> {
                           style: XelaUserAvatarStyle.CIRCLE,
                         ),
                         XelaUserAvatar(
-                          icon: Icon(
+                          icon: const Icon(
                             Icons.account_circle,
                             color: Colors.white,
                           ),
                           size: XelaUserAvatarSize.LARGE,
                           style: XelaUserAvatarStyle.RECTANGLE,
                           decoration: XelaUserAvatarDecoration.PLUS,
-                          plusIcon: Icon(
+                          plusIcon: const Icon(
                             Icons.add,
                             color: Colors.white,
                           ),
@@ -687,69 +687,14 @@ class _UserAvatarComponentState extends State<UserAvatarComponent> {
                               _isDark ? XelaColor.Gray1 : Colors.white,
                         ),
                         XelaUserAvatar(
-                          icon: Icon(
+                          icon: const Icon(
                             Icons.account_circle,
                             color: Colors.white,
                           ),
                           size: XelaUserAvatarSize.LARGE,
                           style: XelaUserAvatarStyle.CIRCLE,
                           decoration: XelaUserAvatarDecoration.PLUS,
-                          plusIcon: Icon(
-                            Icons.add,
-                            color: Colors.white,
-                          ),
-                          decorationBackground: XelaColor.Blue3,
-                          decorationBorderColor:
-                              _isDark ? XelaColor.Gray1 : Colors.white,
-                        ),
-                      ],
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    ),
-                  ),
-                  Container(
-                    padding: const EdgeInsets.symmetric(vertical: 4),
-                    child: Row(
-                      children: [
-                        XelaUserAvatar(
-                          icon: Icon(
-                            Icons.account_circle,
-                            color: Colors.white,
-                          ),
-                          size: XelaUserAvatarSize.MEDIUM,
-                        ),
-                        XelaUserAvatar(
-                          icon: Icon(
-                            Icons.account_circle,
-                            color: Colors.white,
-                          ),
-                          size: XelaUserAvatarSize.MEDIUM,
-                          style: XelaUserAvatarStyle.CIRCLE,
-                        ),
-                        XelaUserAvatar(
-                          icon: Icon(
-                            Icons.account_circle,
-                            color: Colors.white,
-                          ),
-                          size: XelaUserAvatarSize.MEDIUM,
-                          style: XelaUserAvatarStyle.RECTANGLE,
-                          decoration: XelaUserAvatarDecoration.PLUS,
-                          plusIcon: Icon(
-                            Icons.add,
-                            color: Colors.white,
-                          ),
-                          decorationBackground: XelaColor.Blue3,
-                          decorationBorderColor:
-                              _isDark ? XelaColor.Gray1 : Colors.white,
-                        ),
-                        XelaUserAvatar(
-                          icon: Icon(
-                            Icons.account_circle,
-                            color: Colors.white,
-                          ),
-                          size: XelaUserAvatarSize.MEDIUM,
-                          style: XelaUserAvatarStyle.CIRCLE,
-                          decoration: XelaUserAvatarDecoration.PLUS,
-                          plusIcon: Icon(
+                          plusIcon: const Icon(
                             Icons.add,
                             color: Colors.white,
                           ),
@@ -766,29 +711,29 @@ class _UserAvatarComponentState extends State<UserAvatarComponent> {
                     child: Row(
                       children: [
                         XelaUserAvatar(
-                          icon: Icon(
+                          icon: const Icon(
                             Icons.account_circle,
                             color: Colors.white,
                           ),
-                          size: XelaUserAvatarSize.SMALL,
+                          size: XelaUserAvatarSize.MEDIUM,
                         ),
                         XelaUserAvatar(
-                          icon: Icon(
+                          icon: const Icon(
                             Icons.account_circle,
                             color: Colors.white,
                           ),
-                          size: XelaUserAvatarSize.SMALL,
+                          size: XelaUserAvatarSize.MEDIUM,
                           style: XelaUserAvatarStyle.CIRCLE,
                         ),
                         XelaUserAvatar(
-                          icon: Icon(
+                          icon: const Icon(
                             Icons.account_circle,
                             color: Colors.white,
                           ),
-                          size: XelaUserAvatarSize.SMALL,
+                          size: XelaUserAvatarSize.MEDIUM,
                           style: XelaUserAvatarStyle.RECTANGLE,
                           decoration: XelaUserAvatarDecoration.PLUS,
-                          plusIcon: Icon(
+                          plusIcon: const Icon(
                             Icons.add,
                             color: Colors.white,
                           ),
@@ -797,14 +742,14 @@ class _UserAvatarComponentState extends State<UserAvatarComponent> {
                               _isDark ? XelaColor.Gray1 : Colors.white,
                         ),
                         XelaUserAvatar(
-                          icon: Icon(
+                          icon: const Icon(
                             Icons.account_circle,
                             color: Colors.white,
                           ),
-                          size: XelaUserAvatarSize.SMALL,
+                          size: XelaUserAvatarSize.MEDIUM,
                           style: XelaUserAvatarStyle.CIRCLE,
                           decoration: XelaUserAvatarDecoration.PLUS,
-                          plusIcon: Icon(
+                          plusIcon: const Icon(
                             Icons.add,
                             color: Colors.white,
                           ),
@@ -821,7 +766,62 @@ class _UserAvatarComponentState extends State<UserAvatarComponent> {
                     child: Row(
                       children: [
                         XelaUserAvatar(
-                          icon: Icon(
+                          icon: const Icon(
+                            Icons.account_circle,
+                            color: Colors.white,
+                          ),
+                          size: XelaUserAvatarSize.SMALL,
+                        ),
+                        XelaUserAvatar(
+                          icon: const Icon(
+                            Icons.account_circle,
+                            color: Colors.white,
+                          ),
+                          size: XelaUserAvatarSize.SMALL,
+                          style: XelaUserAvatarStyle.CIRCLE,
+                        ),
+                        XelaUserAvatar(
+                          icon: const Icon(
+                            Icons.account_circle,
+                            color: Colors.white,
+                          ),
+                          size: XelaUserAvatarSize.SMALL,
+                          style: XelaUserAvatarStyle.RECTANGLE,
+                          decoration: XelaUserAvatarDecoration.PLUS,
+                          plusIcon: const Icon(
+                            Icons.add,
+                            color: Colors.white,
+                          ),
+                          decorationBackground: XelaColor.Blue3,
+                          decorationBorderColor:
+                              _isDark ? XelaColor.Gray1 : Colors.white,
+                        ),
+                        XelaUserAvatar(
+                          icon: const Icon(
+                            Icons.account_circle,
+                            color: Colors.white,
+                          ),
+                          size: XelaUserAvatarSize.SMALL,
+                          style: XelaUserAvatarStyle.CIRCLE,
+                          decoration: XelaUserAvatarDecoration.PLUS,
+                          plusIcon: const Icon(
+                            Icons.add,
+                            color: Colors.white,
+                          ),
+                          decorationBackground: XelaColor.Blue3,
+                          decorationBorderColor:
+                              _isDark ? XelaColor.Gray1 : Colors.white,
+                        ),
+                      ],
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    ),
+                  ),
+                  Container(
+                    padding: const EdgeInsets.symmetric(vertical: 4),
+                    child: Row(
+                      children: [
+                        XelaUserAvatar(
+                          icon: const Icon(
                             Icons.account_circle,
                             color: Colors.white,
                           ),
@@ -836,7 +836,7 @@ class _UserAvatarComponentState extends State<UserAvatarComponent> {
                               XelaUserAvatarDecorationPosition.TOPRIGHT,
                         ),
                         XelaUserAvatar(
-                          icon: Icon(
+                          icon: const Icon(
                             Icons.account_circle,
                             color: Colors.white,
                           ),
@@ -851,7 +851,7 @@ class _UserAvatarComponentState extends State<UserAvatarComponent> {
                               XelaUserAvatarDecorationPosition.TOPRIGHT,
                         ),
                         XelaUserAvatar(
-                          icon: Icon(
+                          icon: const Icon(
                             Icons.account_circle,
                             color: Colors.white,
                           ),
@@ -864,7 +864,7 @@ class _UserAvatarComponentState extends State<UserAvatarComponent> {
                               _isDark ? XelaColor.Gray1 : Colors.white,
                         ),
                         XelaUserAvatar(
-                          icon: Icon(
+                          icon: const Icon(
                             Icons.account_circle,
                             color: Colors.white,
                           ),
@@ -883,9 +883,10 @@ class _UserAvatarComponentState extends State<UserAvatarComponent> {
                   Container(
                     padding: const EdgeInsets.symmetric(vertical: 4),
                     child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
                         XelaUserAvatar(
-                          icon: Icon(
+                          icon: const Icon(
                             Icons.account_circle,
                             color: Colors.white,
                           ),
@@ -900,7 +901,7 @@ class _UserAvatarComponentState extends State<UserAvatarComponent> {
                               XelaUserAvatarDecorationPosition.TOPRIGHT,
                         ),
                         XelaUserAvatar(
-                          icon: Icon(
+                          icon: const Icon(
                             Icons.account_circle,
                             color: Colors.white,
                           ),
@@ -915,7 +916,7 @@ class _UserAvatarComponentState extends State<UserAvatarComponent> {
                               XelaUserAvatarDecorationPosition.TOPRIGHT,
                         ),
                         XelaUserAvatar(
-                          icon: Icon(
+                          icon: const Icon(
                             Icons.account_circle,
                             color: Colors.white,
                           ),
@@ -928,11 +929,74 @@ class _UserAvatarComponentState extends State<UserAvatarComponent> {
                               _isDark ? XelaColor.Gray1 : Colors.white,
                         ),
                         XelaUserAvatar(
-                          icon: Icon(
+                          icon: const Icon(
                             Icons.account_circle,
                             color: Colors.white,
                           ),
                           size: XelaUserAvatarSize.MEDIUM,
+                          style: XelaUserAvatarStyle.CIRCLE,
+                          decoration: XelaUserAvatarDecoration.COUNTER,
+                          count: 2,
+                          decorationBackground: XelaColor.Red3,
+                          decorationBorderColor:
+                              _isDark ? XelaColor.Gray1 : Colors.white,
+                        ),
+                      ],
+                    ),
+                  ),
+                  Container(
+                    padding: const EdgeInsets.symmetric(vertical: 4),
+                    child: Row(
+                      children: [
+                        XelaUserAvatar(
+                          icon: const Icon(
+                            Icons.account_circle,
+                            color: Colors.white,
+                          ),
+                          size: XelaUserAvatarSize.SMALL,
+                          style: XelaUserAvatarStyle.RECTANGLE,
+                          decoration: XelaUserAvatarDecoration.COUNTER,
+                          count: 2,
+                          decorationBackground: XelaColor.Red3,
+                          decorationBorderColor:
+                              _isDark ? XelaColor.Gray1 : Colors.white,
+                          decorationPosition:
+                              XelaUserAvatarDecorationPosition.TOPRIGHT,
+                        ),
+                        XelaUserAvatar(
+                          icon: const Icon(
+                            Icons.account_circle,
+                            color: Colors.white,
+                          ),
+                          size: XelaUserAvatarSize.SMALL,
+                          style: XelaUserAvatarStyle.CIRCLE,
+                          decoration: XelaUserAvatarDecoration.COUNTER,
+                          count: 2,
+                          decorationBackground: XelaColor.Red3,
+                          decorationBorderColor:
+                              _isDark ? XelaColor.Gray1 : Colors.white,
+                          decorationPosition:
+                              XelaUserAvatarDecorationPosition.TOPRIGHT,
+                        ),
+                        XelaUserAvatar(
+                          icon: const Icon(
+                            Icons.account_circle,
+                            color: Colors.white,
+                          ),
+                          size: XelaUserAvatarSize.SMALL,
+                          style: XelaUserAvatarStyle.RECTANGLE,
+                          decoration: XelaUserAvatarDecoration.COUNTER,
+                          count: 2,
+                          decorationBackground: XelaColor.Red3,
+                          decorationBorderColor:
+                              _isDark ? XelaColor.Gray1 : Colors.white,
+                        ),
+                        XelaUserAvatar(
+                          icon: const Icon(
+                            Icons.account_circle,
+                            color: Colors.white,
+                          ),
+                          size: XelaUserAvatarSize.SMALL,
                           style: XelaUserAvatarStyle.CIRCLE,
                           decoration: XelaUserAvatarDecoration.COUNTER,
                           count: 2,
@@ -949,71 +1013,7 @@ class _UserAvatarComponentState extends State<UserAvatarComponent> {
                     child: Row(
                       children: [
                         XelaUserAvatar(
-                          icon: Icon(
-                            Icons.account_circle,
-                            color: Colors.white,
-                          ),
-                          size: XelaUserAvatarSize.SMALL,
-                          style: XelaUserAvatarStyle.RECTANGLE,
-                          decoration: XelaUserAvatarDecoration.COUNTER,
-                          count: 2,
-                          decorationBackground: XelaColor.Red3,
-                          decorationBorderColor:
-                              _isDark ? XelaColor.Gray1 : Colors.white,
-                          decorationPosition:
-                              XelaUserAvatarDecorationPosition.TOPRIGHT,
-                        ),
-                        XelaUserAvatar(
-                          icon: Icon(
-                            Icons.account_circle,
-                            color: Colors.white,
-                          ),
-                          size: XelaUserAvatarSize.SMALL,
-                          style: XelaUserAvatarStyle.CIRCLE,
-                          decoration: XelaUserAvatarDecoration.COUNTER,
-                          count: 2,
-                          decorationBackground: XelaColor.Red3,
-                          decorationBorderColor:
-                              _isDark ? XelaColor.Gray1 : Colors.white,
-                          decorationPosition:
-                              XelaUserAvatarDecorationPosition.TOPRIGHT,
-                        ),
-                        XelaUserAvatar(
-                          icon: Icon(
-                            Icons.account_circle,
-                            color: Colors.white,
-                          ),
-                          size: XelaUserAvatarSize.SMALL,
-                          style: XelaUserAvatarStyle.RECTANGLE,
-                          decoration: XelaUserAvatarDecoration.COUNTER,
-                          count: 2,
-                          decorationBackground: XelaColor.Red3,
-                          decorationBorderColor:
-                              _isDark ? XelaColor.Gray1 : Colors.white,
-                        ),
-                        XelaUserAvatar(
-                          icon: Icon(
-                            Icons.account_circle,
-                            color: Colors.white,
-                          ),
-                          size: XelaUserAvatarSize.SMALL,
-                          style: XelaUserAvatarStyle.CIRCLE,
-                          decoration: XelaUserAvatarDecoration.COUNTER,
-                          count: 2,
-                          decorationBackground: XelaColor.Red3,
-                          decorationBorderColor:
-                              _isDark ? XelaColor.Gray1 : Colors.white,
-                        ),
-                      ],
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    ),
-                  ),
-                  Container(
-                    padding: const EdgeInsets.symmetric(vertical: 4),
-                    child: Row(
-                      children: [
-                        XelaUserAvatar(
-                          icon: Icon(
+                          icon: const Icon(
                             Icons.account_circle,
                             color: Colors.white,
                           ),
@@ -1027,7 +1027,7 @@ class _UserAvatarComponentState extends State<UserAvatarComponent> {
                               XelaUserAvatarDecorationPosition.TOPRIGHT,
                         ),
                         XelaUserAvatar(
-                          icon: Icon(
+                          icon: const Icon(
                             Icons.account_circle,
                             color: Colors.white,
                           ),
@@ -1041,7 +1041,7 @@ class _UserAvatarComponentState extends State<UserAvatarComponent> {
                               XelaUserAvatarDecorationPosition.TOPRIGHT,
                         ),
                         XelaUserAvatar(
-                          icon: Icon(
+                          icon: const Icon(
                             Icons.account_circle,
                             color: Colors.white,
                           ),
@@ -1053,7 +1053,7 @@ class _UserAvatarComponentState extends State<UserAvatarComponent> {
                               _isDark ? XelaColor.Gray1 : Colors.white,
                         ),
                         XelaUserAvatar(
-                          icon: Icon(
+                          icon: const Icon(
                             Icons.account_circle,
                             color: Colors.white,
                           ),
@@ -1073,7 +1073,7 @@ class _UserAvatarComponentState extends State<UserAvatarComponent> {
                     child: Row(
                       children: [
                         XelaUserAvatar(
-                          icon: Icon(
+                          icon: const Icon(
                             Icons.account_circle,
                             color: Colors.white,
                           ),
@@ -1087,7 +1087,7 @@ class _UserAvatarComponentState extends State<UserAvatarComponent> {
                               XelaUserAvatarDecorationPosition.TOPRIGHT,
                         ),
                         XelaUserAvatar(
-                          icon: Icon(
+                          icon: const Icon(
                             Icons.account_circle,
                             color: Colors.white,
                           ),
@@ -1101,7 +1101,7 @@ class _UserAvatarComponentState extends State<UserAvatarComponent> {
                               XelaUserAvatarDecorationPosition.TOPRIGHT,
                         ),
                         XelaUserAvatar(
-                          icon: Icon(
+                          icon: const Icon(
                             Icons.account_circle,
                             color: Colors.white,
                           ),
@@ -1113,7 +1113,7 @@ class _UserAvatarComponentState extends State<UserAvatarComponent> {
                               _isDark ? XelaColor.Gray1 : Colors.white,
                         ),
                         XelaUserAvatar(
-                          icon: Icon(
+                          icon: const Icon(
                             Icons.account_circle,
                             color: Colors.white,
                           ),
@@ -1133,7 +1133,7 @@ class _UserAvatarComponentState extends State<UserAvatarComponent> {
                     child: Row(
                       children: [
                         XelaUserAvatar(
-                          icon: Icon(
+                          icon: const Icon(
                             Icons.account_circle,
                             color: Colors.white,
                           ),
@@ -1147,7 +1147,7 @@ class _UserAvatarComponentState extends State<UserAvatarComponent> {
                               XelaUserAvatarDecorationPosition.TOPRIGHT,
                         ),
                         XelaUserAvatar(
-                          icon: Icon(
+                          icon: const Icon(
                             Icons.account_circle,
                             color: Colors.white,
                           ),
@@ -1161,7 +1161,7 @@ class _UserAvatarComponentState extends State<UserAvatarComponent> {
                               XelaUserAvatarDecorationPosition.TOPRIGHT,
                         ),
                         XelaUserAvatar(
-                          icon: Icon(
+                          icon: const Icon(
                             Icons.account_circle,
                             color: Colors.white,
                           ),
@@ -1173,7 +1173,7 @@ class _UserAvatarComponentState extends State<UserAvatarComponent> {
                               _isDark ? XelaColor.Gray1 : Colors.white,
                         ),
                         XelaUserAvatar(
-                          icon: Icon(
+                          icon: const Icon(
                             Icons.account_circle,
                             color: Colors.white,
                           ),
@@ -1229,7 +1229,7 @@ class _UserAvatarComponentState extends State<UserAvatarComponent> {
                           size: XelaUserAvatarSize.LARGE,
                           style: XelaUserAvatarStyle.RECTANGLE,
                           decoration: XelaUserAvatarDecoration.PLUS,
-                          plusIcon: Icon(
+                          plusIcon: const Icon(
                             Icons.add,
                             color: Colors.white,
                           ),
@@ -1244,7 +1244,7 @@ class _UserAvatarComponentState extends State<UserAvatarComponent> {
                           size: XelaUserAvatarSize.LARGE,
                           style: XelaUserAvatarStyle.CIRCLE,
                           decoration: XelaUserAvatarDecoration.PLUS,
-                          plusIcon: Icon(
+                          plusIcon: const Icon(
                             Icons.add,
                             color: Colors.white,
                           ),
@@ -1280,7 +1280,7 @@ class _UserAvatarComponentState extends State<UserAvatarComponent> {
                           size: XelaUserAvatarSize.MEDIUM,
                           style: XelaUserAvatarStyle.RECTANGLE,
                           decoration: XelaUserAvatarDecoration.PLUS,
-                          plusIcon: Icon(
+                          plusIcon: const Icon(
                             Icons.add,
                             color: Colors.white,
                           ),
@@ -1295,7 +1295,7 @@ class _UserAvatarComponentState extends State<UserAvatarComponent> {
                           size: XelaUserAvatarSize.MEDIUM,
                           style: XelaUserAvatarStyle.CIRCLE,
                           decoration: XelaUserAvatarDecoration.PLUS,
-                          plusIcon: Icon(
+                          plusIcon: const Icon(
                             Icons.add,
                             color: Colors.white,
                           ),
@@ -1331,7 +1331,7 @@ class _UserAvatarComponentState extends State<UserAvatarComponent> {
                           size: XelaUserAvatarSize.SMALL,
                           style: XelaUserAvatarStyle.RECTANGLE,
                           decoration: XelaUserAvatarDecoration.PLUS,
-                          plusIcon: Icon(
+                          plusIcon: const Icon(
                             Icons.add,
                             color: Colors.white,
                           ),
@@ -1346,7 +1346,7 @@ class _UserAvatarComponentState extends State<UserAvatarComponent> {
                           size: XelaUserAvatarSize.SMALL,
                           style: XelaUserAvatarStyle.CIRCLE,
                           decoration: XelaUserAvatarDecoration.PLUS,
-                          plusIcon: Icon(
+                          plusIcon: const Icon(
                             Icons.add,
                             color: Colors.white,
                           ),

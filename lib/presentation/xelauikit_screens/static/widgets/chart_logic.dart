@@ -127,6 +127,7 @@ class ChartLogic {
   final Map<int, List<FlSpot>> _outcomeMonthsData = {
     1: const [
       FlSpot(0, 3000),
+      FlSpot(1, 9000),
       FlSpot(2, 18000),
       FlSpot(3.2, 13000),
       FlSpot(4, 21000),
