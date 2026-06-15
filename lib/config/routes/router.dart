@@ -69,7 +69,7 @@ class AppRouter {
     switch (settings.name) {
       case main:
         return MaterialPageRoute(builder: (ctx) => const MainScreen());
-      //Router screen ui xela kit
+        //Router screen ui xela kit
       case typography:
         return MaterialPageRoute(builder: (ctx) => const TypographyComponent());
       case colors:
@@ -184,7 +184,6 @@ class PageTransition<T> extends PageRouteBuilder<T> {
               case PageTransitionType.FADE:
                 return FadeTransition(opacity: animation, child: child);
                 // ignore: dead_code
-                break;
               case PageTransitionType.RIGHT_TO_LEFT:
                 return SlideTransition(
                   position: Tween<Offset>(
@@ -194,7 +193,6 @@ class PageTransition<T> extends PageRouteBuilder<T> {
                   child: child,
                 );
                 // ignore: dead_code
-                break;
               case PageTransitionType.BOTTOM_TO_TOP:
                 return SlideTransition(
                   position: Tween<Offset>(
@@ -204,7 +202,6 @@ class PageTransition<T> extends PageRouteBuilder<T> {
                   child: child,
                 );
                 // ignore: dead_code
-                break;
               case PageTransitionType.RIGHT_TO_LEFT_WITH_FADE:
                 return SlideTransition(
                   position: Tween<Offset>(
@@ -223,7 +220,6 @@ class PageTransition<T> extends PageRouteBuilder<T> {
                   ),
                 );
                 // ignore: dead_code
-                break;
             }
           },
         );

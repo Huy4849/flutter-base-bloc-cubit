@@ -115,7 +115,6 @@ class _Sidebar1State extends State<SideBar1>
                         padding: const EdgeInsets.only(
                             top: 24, left: 16, right: 16, bottom: 16),
                         height: double.infinity,
-                        width: sizeAnimation.value,
                         decoration: BoxDecoration(
                           color: _isDark ? XelaColor.Gray2 : Colors.white,
                           borderRadius: BorderRadius.circular(24),
@@ -128,7 +127,7 @@ class _Sidebar1State extends State<SideBar1>
                                   isOpen
                                       ? Expanded(
                                           child: Opacity(
-                                              opacity: fadeAnimation.value,
+                                              opacity: BorderSide.strokeAlignCenter,
                                               child: Container(
                                                   alignment:
                                                       Alignment.centerLeft,
