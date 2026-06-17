@@ -3,6 +3,8 @@ import 'package:bnv_opendata/data/repositories/budget_repository.dart';
 import 'package:bnv_opendata/data/services/budget_service.dart';
 import 'package:bnv_opendata/data/services/wallet_service.dart';
 import 'package:bnv_opendata/data/repositories/wallet_repository.dart';
+import 'package:bnv_opendata/data/services/transaction_service.dart';
+import 'package:bnv_opendata/data/repositories/transaction_repository.dart';
 import 'package:bnv_opendata/domain/env/model/app_constants.dart';
 import 'package:bnv_opendata/domain/locals/prefs_service.dart';
 import 'package:dio/dio.dart';
@@ -17,6 +19,9 @@ void configureDependencies() {
 
   Get.put(WalletService(dio));
   Get.put(WalletRepository(Get.find()));
+
+  Get.put(TransactionService(dio));
+  Get.put(TransactionRepository(Get.find()));
 }
 
 int _connectTimeOut = 60000;

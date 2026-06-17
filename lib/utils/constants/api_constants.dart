@@ -7,4 +7,5 @@ class ApiConstants {
   static const int TIME_OUT = 30;
   static const BUDGETS = '/api/budgets';
   static const WALLETS = '/api/wallets';
+  static const TRANSACTIONS = '/api/transactions';
 }
