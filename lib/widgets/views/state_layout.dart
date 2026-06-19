@@ -15,6 +15,7 @@ class StateFullLayout extends StatelessWidget {
   final AppException _error;
   final Function() _retry;
   final dynamic _textEmpty;
+  final Widget? _shimmerLoading;
 
   const StateFullLayout(
       {Key? key,
@@ -22,12 +23,14 @@ class StateFullLayout extends StatelessWidget {
       required Widget child,
       required AppException error,
       required Function() retry,
-      required dynamic textEmpty})
+      required dynamic textEmpty,
+      Widget? shimmerLoading})
       : _stateLayout = stateLayout,
         _error = error,
         _child = child,
         _retry = retry,
         _textEmpty = textEmpty,
+        _shimmerLoading = shimmerLoading,
         super(key: key);
 
   @override
@@ -38,6 +41,9 @@ class StateFullLayout extends StatelessWidget {
     if (_stateLayout == StateLayout.showEmpty) {
       if (_textEmpty is Widget) return _textEmpty as Widget;
       return EmptyView(_textEmpty.toString());
+    }
+    if (_stateLayout == StateLayout.showLoading && _shimmerLoading != null) {
+      return _shimmerLoading!;
     }
     return ModalProgressHUD(
       inAsyncCall: _stateLayout == StateLayout.showLoading,

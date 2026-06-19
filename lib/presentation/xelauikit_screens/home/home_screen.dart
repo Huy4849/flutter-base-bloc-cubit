@@ -1,6 +1,7 @@
 import 'package:bnv_opendata/presentation/xelauikit_screens/home/widgets/wallets_section.dart';
 import 'package:flutter/material.dart';
 import 'package:bnv_opendata/presentation/xelauikit_screens/home/widgets/header_home.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'widgets/budget_section.dart';
 import 'widgets/transaction_section.dart';
 

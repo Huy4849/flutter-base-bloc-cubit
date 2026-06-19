@@ -3,6 +3,7 @@ import 'package:bnv_opendata/presentation/xelauikit_screens/home/bloc/cubit/budg
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
+import 'package:shimmer/shimmer.dart';
 import 'package:bnv_opendata/widgets/views/state_stream_layout.dart';
 import 'budget_card.dart';
 
@@ -22,7 +23,20 @@ class BudgetSection extends StatelessWidget {
             retry: () => cubit.fetchBudgetData('2023-01'),
             error: cubit.error,
             textEmpty: 'No budget data',
+            shimmerLoading: Shimmer.fromColors(
+              baseColor: Colors.grey[300]!,
+              highlightColor: Colors.grey[100]!,
+              child: Container(
+                margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                height: 150, // Ước chừng chiều cao của BudgetCard
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(16),
+                ),
+              ),
+            ),
             child: BlocBuilder<BudgetCubit, BudgetState>(
+              buildWhen: (previous, current) => previous.budgetData != current.budgetData,
               builder: (context, state) {
                 final budgetModel = state.budgetData?.data?.budget;
                 if (budgetModel == null) return const SizedBox.shrink();
