@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:bnv_opendata/data/model/transaction_model.dart';
-import 'package:bnv_opendata/data/repositories/transaction_repository.dart';
+import 'package:bnv_opendata/data/repositories/home_repository.dart';
 import 'package:bnv_opendata/presentation/xelauikit_screens/home/bloc/cubit/transaction_cubit.dart';
 import 'package:bnv_opendata/presentation/xelauikit_screens/home/bloc/cubit/transaction_state.dart';
 
@@ -15,7 +15,7 @@ class TransactionSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (_) => TransactionCubit(Get.find<TransactionRepository>())..fetchTransactionData(),
+      create: (_) => TransactionCubit(Get.find<HomeRepository>())..fetchTransactionData(),
       child: BlocBuilder<TransactionCubit, TransactionState>(
         builder: (context, state) {
           final transactions = state.transactionData?.data?.transactions ?? [];

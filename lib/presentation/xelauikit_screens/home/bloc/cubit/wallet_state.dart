@@ -13,8 +13,3 @@ class WalletState extends Equatable {
     return WalletState(walletData: walletData ?? this.walletData);
   }
 }
-
-final class WalletInitial extends WalletState {
-  @override
-  List<Object> get props => [];
-}

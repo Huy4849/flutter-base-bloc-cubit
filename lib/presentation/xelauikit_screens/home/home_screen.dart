@@ -21,29 +21,31 @@ class _HomeScreenState extends State<HomeScreen> {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            // --- KHỐI BANNER & BUDGET CARD VỚI STACK ---
             SizedBox(
               height: 225,
               child: Stack(
                 children: [
                   HeaderHome(screenWidth: screenWidth),
-                  BudgetSection(),
+                  const Positioned(
+                    top: 113,
+                    left: 16,
+                    right: 16,
+                    height: 97,
+                    child: BudgetSection(),
+                  ),
                 ],
               ),
             ),
 
-            // --- KHỐI NỘI DUNG WALLETS & TRANSACTIONS ---
             const Padding(
               padding: EdgeInsets.symmetric(horizontal: 16),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  // Wallets
                   WalletsSection(),
 
                   SizedBox(height: 16),
 
-                  // Transactions
                   TransactionSection()
                 ],
               ),

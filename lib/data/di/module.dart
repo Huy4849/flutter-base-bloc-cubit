@@ -1,10 +1,6 @@
 import 'package:bnv_opendata/data/di/flutter_transformer.dart';
-import 'package:bnv_opendata/data/repositories/budget_repository.dart';
-import 'package:bnv_opendata/data/services/budget_service.dart';
-import 'package:bnv_opendata/data/services/wallet_service.dart';
-import 'package:bnv_opendata/data/repositories/wallet_repository.dart';
-import 'package:bnv_opendata/data/services/transaction_service.dart';
-import 'package:bnv_opendata/data/repositories/transaction_repository.dart';
+import 'package:bnv_opendata/data/repositories/home_repository.dart';
+import 'package:bnv_opendata/data/services/home_service.dart';
 import 'package:bnv_opendata/domain/env/model/app_constants.dart';
 import 'package:bnv_opendata/domain/locals/prefs_service.dart';
 import 'package:dio/dio.dart';
@@ -14,14 +10,8 @@ import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 
 void configureDependencies() {
   final dio = provideDio();
-  Get.put(BudgetService(dio));
-  Get.put(BudgetRepository(Get.find()));
-
-  Get.put(WalletService(dio));
-  Get.put(WalletRepository(Get.find()));
-
-  Get.put(TransactionService(dio));
-  Get.put(TransactionRepository(Get.find()));
+  Get.put(HomeService(dio));
+  Get.put(HomeRepository(Get.find()));
 }
 
 int _connectTimeOut = 60000;

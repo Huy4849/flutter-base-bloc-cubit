@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
-import 'package:bnv_opendata/data/repositories/wallet_repository.dart';
+import 'package:bnv_opendata/data/repositories/home_repository.dart';
 import 'package:bnv_opendata/presentation/xelauikit_screens/home/bloc/cubit/wallet_cubit.dart';
 import 'package:bnv_opendata/presentation/xelauikit_screens/home/bloc/cubit/wallet_state.dart';
 import 'wallet_card.dart';
@@ -35,7 +35,7 @@ class WalletsSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (_) => WalletCubit(Get.find<WalletRepository>())..fetchWalletData(),
+      create: (_) => WalletCubit(Get.find<HomeRepository>())..fetchWalletData(),
       child: BlocBuilder<WalletCubit, WalletState>(
         builder: (context, state) {
           final wallets = state.walletData?.data?.wallets ?? [];

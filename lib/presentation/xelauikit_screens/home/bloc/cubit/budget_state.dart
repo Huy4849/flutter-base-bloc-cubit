@@ -4,9 +4,9 @@ import 'package:bnv_opendata/data/model/budget_model.dart';
 class BudgetState extends Equatable {
   const BudgetState({this.budgetData});
 
-  final BudgetModel? budgetData;
+  final BudgetResponse? budgetData;
 
-  BudgetState copyWith({BudgetModel? budgetData}) {
+  BudgetState copyWith({BudgetResponse? budgetData}) {
     return BudgetState(budgetData: budgetData ?? this.budgetData);
   }
 

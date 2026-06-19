@@ -22,26 +22,21 @@ class BudgetSection extends StatelessWidget {
             retry: () => cubit.fetchBudgetData('2023-01'),
             error: cubit.error,
             textEmpty: 'No budget data',
-            child: Positioned(
-              top: 113,
-              left: 16,
-              right: 16,
-              child: BlocBuilder<BudgetCubit, BudgetState>(
-                builder: (context, state) {
-                  final budget = state.budgetData;
-                  if (budget == null) return const SizedBox.shrink();
+            child: BlocBuilder<BudgetCubit, BudgetState>(
+              builder: (context, state) {
+                final budgetModel = state.budgetData?.data?.budget;
+                if (budgetModel == null) return const SizedBox.shrink();
 
-                  return BudgetCard(
-                    budgetTitle: 'Tháng ${budget.month} năm ${budget.year}',
-                    budgetSpent: '${budget.spent}',
-                    budgetTotal: '${budget.limit}',
-                    budgetProgress: (budget.percentUsed ?? 0) / 100,
-                    budgetPercent: '${budget.percentUsed}%',
-                    budgetDaily: 'Daily budget - (\$${budget.dailyBudget?.min} - \$${budget.dailyBudget?.max})',
-                    budgetDaysLeft: '${budget.daysLeft} Days left',
-                  );
-                },
-              ),
+                return BudgetCard(
+                  budgetTitle: 'Tháng ${budgetModel.month} năm ${budgetModel.year}',
+                  budgetSpent: '${budgetModel.spent}',
+                  budgetTotal: '${budgetModel.limit}',
+                  budgetProgress: (budgetModel.percentUsed ?? 0) / 100,
+                  budgetPercent: '${budgetModel.percentUsed}%',
+                  budgetDaily: 'Daily budget - (\$${budgetModel.dailyBudget?.min} - \$${budgetModel.dailyBudget?.max})',
+                  budgetDaysLeft: '${budgetModel.daysLeft} Days left',
+                );
+              },
             ),
           );
         },

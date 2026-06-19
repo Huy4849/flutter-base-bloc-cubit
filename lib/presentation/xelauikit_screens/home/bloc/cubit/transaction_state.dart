@@ -14,8 +14,3 @@ class TransactionState extends Equatable {
     return TransactionState(transactionData: transactionData ?? this.transactionData);
   }
 }
-
-final class TransactionInitial extends TransactionState {
-  @override
-  List<Object> get props => [];
-}
