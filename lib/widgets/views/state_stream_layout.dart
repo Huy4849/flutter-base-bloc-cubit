@@ -8,6 +8,7 @@ class StateStreamLayout extends StatelessWidget {
   final AppException error;
   final Function() retry;
   final dynamic textEmpty;
+  final Widget? shimmerLoading;
 
   const StateStreamLayout({
     required this.stream,
@@ -15,6 +16,7 @@ class StateStreamLayout extends StatelessWidget {
     required this.error,
     required this.retry,
     required this.textEmpty,
+    this.shimmerLoading,
     Key? key,
   }) : super(key: key);
 
@@ -29,6 +31,7 @@ class StateStreamLayout extends StatelessWidget {
           stateLayout: snapshot.data ?? StateLayout.showLoading,
           error: error,
           child: child,
+          shimmerLoading: shimmerLoading,
         );
       },
     );

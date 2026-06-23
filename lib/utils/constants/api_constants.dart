@@ -5,4 +5,7 @@ class ApiConstants {
   static const int PAGE_BEGIN = 1;
   static const int NOT_SAVED_ID = -1;
   static const int TIME_OUT = 30;
+  static const BUDGETS = '/api/budgets';
+  static const WALLETS = '/api/wallets';
+  static const TRANSACTIONS = '/api/transactions';
 }

@@ -1,80 +1,121 @@
 import 'package:flutter/material.dart';
-
+import 'package:shimmer/shimmer.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:get/get.dart';
+import 'package:bnv_opendata/data/repositories/home_repository.dart';
+import 'package:bnv_opendata/presentation/xelauikit_screens/home/bloc/cubit/wallet_cubit.dart';
+import 'package:bnv_opendata/presentation/xelauikit_screens/home/bloc/cubit/wallet_state.dart';
 import 'wallet_card.dart';
 
 class WalletsSection extends StatelessWidget {
   const WalletsSection({super.key});
 
+  Map<String, dynamic> _getWalletDesign(String? iconType) {
+    switch (iconType) {
+      case 'card':
+        return {
+          'colors': [const Color(0xFFEBF0FA), const Color(0xFFDCE4F7)],
+          'iconPath': 'assets/images/icon-1.png',
+        };
+      case 'cash':
+        return {
+          'colors': [const Color(0xFFEAF5EE), const Color(0xFFDCEFE3)],
+          'iconPath': 'assets/images/icon-2.png',
+        };
+      case 'wallet':
+      default:
+        return {
+          'colors': [const Color(0xFFFDF3E1), const Color(0xFFF9E4C2)],
+          'iconPath': 'assets/images/icon-1.png',
+        };
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
-    final List<Map<String, dynamic>> fakeWalletsData = [
-      {
-        'colors': [const Color(0xFFEBF0FA), const Color(0xFFDCE4F7)],
-        'balance': '10,000',
-        'trailingText': '3456',
-        'iconPath': 'assets/images/icon-1.png',
-        'isCheck': true,
-      },
-      {
-        'colors': [const Color(0xFFEAF5EE), const Color(0xFFDCEFE3)],
-        'balance': '10,000',
-        'trailingText': 'Cash',
-        'iconPath': 'assets/images/icon-2.png',
-        'isCheck': false,
-      },
-      {
-        'colors': [const Color(0xFFEAF5EE), const Color(0xFFDCEFE3)],
-        'balance': '10,000',
-        'trailingText': 'Cash',
-        'iconPath': 'assets/images/icon-2.png',
-        'isCheck': false,
-      },
-    ];
+    return BlocProvider(
+      create: (_) => WalletCubit(Get.find<HomeRepository>())..fetchWalletData(),
+      child: BlocBuilder<WalletCubit, WalletState>(
+        builder: (context, state) {
+          final wallets = state.walletData?.data?.wallets ?? [];
 
-    return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-      const Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Text('Wallets',
-              style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.w600,
-                  color: Color(0xFF242424))),
-          Text('See All',
-              style: TextStyle(
-                  fontSize: 14,
-                  fontWeight: FontWeight.w700,
-                  color: Color(0xFF489FCD))),
-        ],
+          return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+            const Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text('Wallets',
+                    style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.w600,
+                        color: Color(0xFF242424))),
+                Text('See All',
+                    style: TextStyle(
+                        fontSize: 14,
+                        fontWeight: FontWeight.w700,
+                        color: Color(0xFF489FCD))),
+              ],
+            ),
+            const SizedBox(height: 8),
+            if (wallets.isEmpty)
+              SizedBox(
+                height: 102,
+                child: ListView.builder(
+                  scrollDirection: Axis.horizontal,
+                  itemCount: 3,
+                  itemBuilder: (context, index) {
+                    return Shimmer.fromColors(
+                      baseColor: Colors.grey[300]!,
+                      highlightColor: Colors.grey[100]!,
+                      child: Container(
+                        width: 160,
+                        margin: const EdgeInsets.only(right: 12),
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(16),
+                        ),
+                      ),
+                    );
+                  },
+                ),
+              )
+            else
+              SizedBox(
+                height: 102,
+                child: CarouselSlider.builder(
+                  itemCount: wallets.length,
+                  options: CarouselOptions(
+                    height: 110,
+                    enlargeCenterPage: false,
+                    enableInfiniteScroll: false,
+                    viewportFraction: 0.44,
+                    padEnds: false,
+                  ),
+                  itemBuilder: (context, index, realIndex) {
+                    final wallet = wallets[index];
+                    final design = _getWalletDesign(wallet.icon);
+                    
+                    final balanceStr = wallet.balance?.toString().replaceAllMapped(
+                      RegExp(r'(\d{1,3})(?=(\d{3})+(?!\d))'),
+                      (Match m) => '${m[1]},'
+                    ) ?? '0';
+
+                    return Padding(
+                      padding: const EdgeInsets.only(right: 12),
+                      child: WalletCard(
+                        gradientColors: design['colors'] as List<Color>,
+                        balance: balanceStr,
+                        trailingText: wallet.cardLast4 ?? wallet.name ?? '',
+                        iconPath: design['iconPath'] as String,
+                        isCheck: index == 0,
+                      ),
+                    );
+                  },
+                ),
+              )
+          ]);
+        },
       ),
-      const SizedBox(height: 8),
-      SizedBox(
-        height: 102,
-        child: CarouselSlider.builder(
-          itemCount: fakeWalletsData.length,
-          options: CarouselOptions(
-            height: 110, // Chiều cao khu vực hiển thị thẻ ví
-            enlargeCenterPage: false, // Thẻ ở giữa tự động to lên 3D
-            enableInfiniteScroll: false, // Tắt cuộn vô tận, đến thẻ cuối thì dừng
-            viewportFraction: 0.44, // Chiếm 85% chiều rộng màn hình, chừa 15% lấp ló thẻ bên cạnh
-            padEnds: false, // Căn chiếc ví đầu tiên áp sát lề trái cho thẳng hàng giao diện
-          ),
-          itemBuilder: (context, index, realIndex) {
-            final wallet = fakeWalletsData[index];
-            return Padding(
-              padding: const EdgeInsets.only(right: 12),
-              child: WalletCard(
-                gradientColors: wallet['colors'] as List<Color>,
-                balance: wallet['balance'] as String,
-                trailingText: wallet['trailingText'] as String,
-                iconPath: wallet['iconPath'] as String,
-                isCheck: wallet['isCheck'] as bool,
-              ),
-            );
-          },
-        ),
-      )
-    ]);
+    );
   }
 }

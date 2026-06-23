@@ -1,4 +1,12 @@
+import 'package:bnv_opendata/data/model/transaction_model.dart';
+import 'package:bnv_opendata/data/repositories/home_repository.dart';
+import 'package:bnv_opendata/presentation/xelauikit_screens/home/bloc/cubit/transaction_cubit.dart';
+import 'package:bnv_opendata/presentation/xelauikit_screens/home/bloc/cubit/transaction_state.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:get/get.dart';
+import 'package:intl/intl.dart';
+import 'package:shimmer/shimmer.dart';
 
 import 'transaction_item.dart';
 
@@ -7,145 +15,113 @@ class TransactionSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final List<Map<String, dynamic>> fakeTransactionsData = [
-      {
-        'title': 'ALDREES 303',
-        'date': '07-01-2023',
-        'amount': '-\$32.00',
-        'amountColor': const Color(0xFFE25C5C),
-        'iconIndex': 1, // Đánh số để nhận diện loại icon vẽ Stack bên dưới
-      },
-      {
-        'title': 'ABYAN CAPITAL',
-        'date': '07-01-2023',
-        'amount': '-\$170.00',
-        'amountColor': const Color(0xFFE25C5C),
-        'iconIndex': 2,
-      },
-      {
-        'title': 'Gryb Company',
-        'date': '07-01-2023',
-        'amount': '-\$28.00',
-        'amountColor': const Color(0xFFE25C5C),
-        'iconIndex': 3,
-      },
-      {
-        'title': 'BANK AL-JAZIRA',
-        'date': '07-01-2023',
-        'amount': '+\$850.00',
-        'amountColor': const Color(0xFF53D258),
-        'iconIndex': 4,
-      },
-    ];
+    return BlocProvider(
+      create: (_) => TransactionCubit(Get.find<HomeRepository>())..fetchTransactionData(),
+      child: BlocBuilder<TransactionCubit, TransactionState>(
+        builder: (context, state) {
+          final transactions = state.transactionData?.data?.transactions ?? [];
 
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Text('Transactions',
-                style: TextStyle(
-                    fontWeight: FontWeight.w600,
-                    fontSize: 20,
-                    color: Color(0xFF242424))),
-            Text('See All',
-                style: TextStyle(
-                    fontWeight: FontWeight.w700,
-                    fontSize: 14,
-                    color: Color(0xFF489FCD)))
-          ],
-        ),
-        const SizedBox(height: 8),
-        const Text('Today',
-            style: TextStyle(
-                fontSize: 16,
-                fontWeight: FontWeight.w400,
-                color: Color(0xFF707070))),
-        const SizedBox(height: 12),
-        ...fakeTransactionsData.map((item) {
-          return TransactionItem(
-              title: item['title'] as String,
-              date: item['date'] as String,
-              amount: item['amount'] as String,
-              amountColor: item['amountColor'] as Color,
-              leadingIcon: _buildTransactionIcon(item['iconIndex'] as int));
-        })
-      ],
-    );
-  }
-
-  Widget _buildTransactionIcon(int index) {
-    if (index == 1) {
-      return Stack(
-        clipBehavior: Clip.none,
-        children: [
-          Container(
-            width: 35,
-            height: 35,
-            decoration: BoxDecoration(
-              color: const Color(0xFFDEBDC5),
-              borderRadius: BorderRadius.circular(3),
-              border: Border.all(color: const Color(0xFF893547), width: 2),
-            ),
-            child: Image.asset('assets/images/icon-3.png'),
-          ),
-          Positioned(
-            top: 25,
-            left: 25,
-            child: Container(
-              width: 14,
-              height: 14,
-              decoration: BoxDecoration(
-                color: const Color(0xFFDEBDC5),
-                borderRadius: BorderRadius.circular(3),
-                border: Border.all(color: const Color(0xFF893547), width: 2),
+          return Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text('Transactions',
+                      style: TextStyle(
+                          fontWeight: FontWeight.w600,
+                          fontSize: 20,
+                          color: Color(0xFF242424))),
+                  Text('See All',
+                      style: TextStyle(
+                          fontWeight: FontWeight.w700,
+                          fontSize: 14,
+                          color: Color(0xFF489FCD)))
+                ],
               ),
-              child: Image.asset('assets/images/icon-4.png'),
-            ),
-          )
-        ],
-      );
-    } else if (index == 2) {
-      return Stack(
-        clipBehavior: Clip.none,
-        children: [
-          Container(
-            width: 35,
-            height: 35,
-            decoration: BoxDecoration(
-                color: const Color(0xFFDEBDC5),
-                borderRadius: BorderRadius.circular(3)),
-            child: Image.asset('assets/images/icon-5.png'),
-          ),
-          Positioned(
-            top: 25,
-            left: 25,
-            child: Image.asset('assets/images/icon-6.png'),
-          )
-        ],
-      );
-    } else if (index == 3) {
-      return Container(
-          width: 35,
-          height: 35,
-          decoration: BoxDecoration(
-            color: const Color(0xFFDEBDC5),
-            borderRadius: BorderRadius.circular(3),
-            border: Border.all(color: const Color(0xFF893547), width: 2),
-          ),
-          child: Image.asset('assets/images/icon-7.png'));
-    } else {
-      return Container(
-        width: 35,
-        height: 35,
-        decoration: BoxDecoration(
-          color: const Color(0xFFCEE2E8),
-          borderRadius: BorderRadius.circular(3),
-          border: Border.all(color: const Color(0xFF619CA4), width: 2),
-        ),
-        child: Image.asset('assets/images/icon-8.png'),
-      );
-    }
+              const SizedBox(height: 8),
+              if (transactions.isEmpty)
+                Column(
+                  children: List.generate(5, (index) => Padding(
+                    padding: const EdgeInsets.only(bottom: 16.0),
+                    child: Shimmer.fromColors(
+                      baseColor: Colors.grey[300]!,
+                      highlightColor: Colors.grey[100]!,
+                      child: Row(
+                        children: [
+                          Container(
+                            width: 48,
+                            height: 48,
+                            decoration: const BoxDecoration(
+                              color: Colors.white,
+                              shape: BoxShape.circle,
+                            ),
+                          ),
+                          const SizedBox(width: 16),
+                          Expanded(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Container(width: double.infinity, height: 16, color: Colors.white),
+                                const SizedBox(height: 8),
+                                Container(width: 100, height: 12, color: Colors.white),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  )),
+                )
+              else ...() {
+                Map<String, List<TransactionModel>> grouped = {};
+                for (var item in transactions) {
+                  String dateStr = item.occurredAt ?? '';
+                  String groupKey = 'Unknown Date';
+                  try {
+                    if (dateStr.isNotEmpty) {
+                      final dt = DateTime.parse(dateStr).toLocal();
+                      final now = DateTime.now();
+                      final today = DateTime(now.year, now.month, now.day);
+                      final yesterday = DateTime(now.year, now.month, now.day - 1);
+                      final itemDate = DateTime(dt.year, dt.month, dt.day);
+
+                      if (itemDate == today) {
+                        groupKey = 'Today';
+                      } else if (itemDate == yesterday) {
+                        groupKey = 'Yesterday';
+                      } else {
+                        groupKey = DateFormat('MMM dd, yyyy').format(dt);
+                      }
+                    }
+                  } catch (e) {
+                  }
+                  grouped.putIfAbsent(groupKey, () => []).add(item);
+                }
+
+                return grouped.entries.map((entry) {
+                  return Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(bottom: 12.0),
+                        child: Text(entry.key,
+                            style: const TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.w400,
+                                color: Color(0xFF707070))),
+                      ),
+                      ...entry.value.map((item) {
+                        return TransactionItem(transaction: item);
+                      })
+                    ],
+                  );
+                }).toList();
+              }()
+            ],
+          );
+        },
+      ),
+    );
   }
 }

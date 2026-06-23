@@ -37,40 +37,53 @@ class WalletCard extends StatelessWidget {
           children: [
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    const Text(
-                      'Total Balance',
-                      style: TextStyle(fontSize: 12, fontWeight: FontWeight.w400, color: Color(0xFF242424)),
-                    ),
-                    Row(
-                      crossAxisAlignment: CrossAxisAlignment.end,
-                      children: [
-                        Text(
-                          '\$$balance',
-                          style: const TextStyle(fontSize: 13, fontWeight: FontWeight.w700, color: Color(0xFF242424)),
-                        ),
-                        const Text(
-                          '.00',
-                          style: TextStyle(fontSize: 11, fontWeight: FontWeight.w400, color: Color(0xFF838486)),
-                        )
-                      ],
-                    )
-                  ],
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      const Text(
+                        'Total Balance',
+                        style: TextStyle(fontSize: 12, fontWeight: FontWeight.w400, color: Color(0xFF242424)),
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                      Row(
+                        crossAxisAlignment: CrossAxisAlignment.end,
+                        children: [
+                          Flexible(
+                            child: Text(
+                              '\$$balance',
+                              style: const TextStyle(fontSize: 13, fontWeight: FontWeight.w700, color: Color(0xFF242424)),
+                              overflow: TextOverflow.ellipsis,
+                            ),
+                          ),
+                          const Text(
+                            '.00',
+                            style: TextStyle(fontSize: 11, fontWeight: FontWeight.w400, color: Color(0xFF838486)),
+                          )
+                        ],
+                      )
+                    ],
+                  ),
                 ),
+                const SizedBox(width: 8),
                 ClipRRect(
                   borderRadius: BorderRadius.circular(16.0),
-                  child: isCheck ? Image.asset(iconPath, width: 24, height: 24, fit: BoxFit.cover) : Container(
+                  child: isCheck ? Image.asset(iconPath, width: 24, height: 24, fit: BoxFit.cover,
+                    errorBuilder: (context, error, stackTrace) => const Icon(Icons.wallet, size: 24, color: Colors.blue),
+                  ) : Container(
                     width: 24, height: 24,
                     decoration: const BoxDecoration(color: Color(0xFF12D14C), shape: BoxShape.circle),
-                    child: Image.asset(iconPath),
+                    child: Image.asset(iconPath, fit: BoxFit.cover,
+                      errorBuilder: (context, error, stackTrace) => const Icon(Icons.account_balance_wallet, size: 16, color: Colors.white),
+                    ),
                   ),
                 ),
               ],
             ),
-            const SizedBox(height: 14),
+            const SizedBox(height: 6),
             isCheck
                 ? Row(
               children: [

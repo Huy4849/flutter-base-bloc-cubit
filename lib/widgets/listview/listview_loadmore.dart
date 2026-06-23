@@ -19,8 +19,7 @@ class ListViewLoadMore extends StatelessWidget {
 
   const ListViewLoadMore(
       this.cubit, this.callApi, this.callApiMore, this.viewItem,
-      {Key? key})
-      : super(key: key);
+      {super.key});
 
   Future<void> refreshPosts() async {
     if (!cubit.loadMoreLoading) {
@@ -43,21 +42,21 @@ class ListViewLoadMore extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    bool _isLoading = false;
+    bool isLoading = false;
     refreshPosts();
     return BlocConsumer(
       bloc: cubit,
       listener: (ctx, state) {
         // Loading
         if (state is Loading && cubit.loadMoreRefresh) {
-          if (!_isLoading) {
-            _isLoading = true;
+          if (!isLoading) {
+            isLoading = true;
             showLoading(ctx, close: (value) {
-              _isLoading = false;
+              isLoading = false;
             });
           }
         }
-        if (_isLoading && state is! Loading) {
+        if (isLoading && state is! Loading) {
           hideLoading(ctx);
         }
         //Get Blog List Completed
